@@ -62,9 +62,9 @@ const buildServerBinaryCopy = register("build:server:binary:copy", async (runner
 		ripgrepPath += ".exe";
 	}
 
-//	if (!fs.existsSync(webOutputPath)) {
-//		throw new Error("Web bundle must be built");
-//	}
+	if (!fs.existsSync(webOutputPath)) {
+		throw new Error("Web bundle must be built");
+	}
 	if (!fs.existsSync(defaultExtensionsPath)) {
 		throw new Error("Default extensions must be built");
 	}
@@ -89,7 +89,7 @@ const buildServerBinaryCopy = register("build:server:binary:copy", async (runner
 			// Nothing
 		}
 	};
-//	cpDir(webOutputPath, webOutputPath);
+	cpDir(webOutputPath, webOutputPath);
 	cpDir(browserAppOutputPath, browserAppOutputPath, "login");
 	fse.mkdirpSync(path.join(cliBuildPath, "dependencies"));
 	fse.copySync(ripgrepPath, path.join(cliBuildPath, "dependencies", "rg"));
