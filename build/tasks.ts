@@ -89,7 +89,7 @@ const buildServerBinaryCopy = register("build:server:binary:copy", async (runner
 			// Nothing
 		}
 	};
-	cpDir(webOutputPath, webOutputPath);
+//	cpDir(webOutputPath, webOutputPath);
 	cpDir(browserAppOutputPath, browserAppOutputPath, "login");
 	fse.mkdirpSync(path.join(cliBuildPath, "dependencies"));
 	fse.copySync(ripgrepPath, path.join(cliBuildPath, "dependencies", "rg"));
