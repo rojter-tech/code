@@ -37,19 +37,19 @@ RUN locale-gen en_US.UTF-8
 # configured in /etc/default/locale so we need to set it manually.
 ENV LC_ALL=en_US.UTF-8
 
-RUN adduser --gecos '' --disabled-password coder && \
-	echo "coder ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/nopasswd
+RUN adduser --gecos '' --disabled-password dreuter && \
+	echo "dreuter ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/nopasswd
 
-USER coder
+USER dreuter
 # We create first instead of just using WORKDIR as when WORKDIR creates, the
 # user is root.
-RUN mkdir -p /home/coder/project
+RUN mkdir -p /home/dreuter/Github
 
-WORKDIR /home/coder/project
+WORKDIR /home/dreuter/Github
 
 # This ensures we have a volume mounted even if the user forgot to do bind
 # mount. So that they do not lose their data if they delete the container.
-VOLUME [ "/home/coder/project" ]
+VOLUME [ "/home/dreuter/Github" ]
 
 COPY --from=0 /src/build/code-server /usr/local/bin/code-server
 EXPOSE 8080
