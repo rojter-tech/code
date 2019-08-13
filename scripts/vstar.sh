@@ -6,7 +6,7 @@ set -euxo pipefail
 
 branch=1.37.0
 dir=/tmp/vstar
-outfile=/tmp/vstar-$branch.tar.gz
+outfile=/home/dreuter/vstar-$branch.tar.gz
 rm -rf $dir
 mkdir -p $dir
 
