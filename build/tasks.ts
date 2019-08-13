@@ -103,7 +103,7 @@ const buildServerBundle = register("build:server:bundle", async (runner) => {
 
 const buildBootstrapFork = register("build:bootstrap-fork", async (runner) => {
 	await ensureInstalled();
-	await ensurePatched();
+//	await ensurePatched();
 
 	const vscodePkgPath = path.join(pkgsPath, "vscode");
 	runner.cwd = vscodePkgPath;
@@ -121,7 +121,7 @@ const buildAppBrowser = register("build:app:browser", async (runner) => {
 
 const buildWeb = register("build:web", async (runner) => {
 	await ensureInstalled();
-	await ensurePatched();
+//	await ensurePatched();
 
 	const webPath = path.join(pkgsPath, "web");
 	runner.cwd = webPath;
@@ -168,19 +168,19 @@ const ensureInstalled = register("vscode:install", async (runner) => {
 	});
 });
 
-const ensurePatched = register("vscode:patch", async (runner) => {
-	if (!fs.existsSync(vscodePath)) {
-		throw new Error("vscode must be cloned to patch");
-	}
-	await ensureInstalled();
-
-	runner.cwd = vscodePath;
-	const patchPath = path.join(__dirname, "../scripts/vscode.patch");
-	const apply = await runner.execute("git", ["apply", "--unidiff-zero", patchPath]);
-	if (apply.exitCode !== 0) {
-		throw new Error(`Failed to apply patches: ${apply.stderr}`);
-	}
-});
+//const ensurePatched = register("vscode:patch", async (runner) => {
+//	if (!fs.existsSync(vscodePath)) {
+//		throw new Error("vscode must be cloned to patch");
+//	}
+//	await ensureInstalled();
+//
+//	runner.cwd = vscodePath;
+//	const patchPath = path.join(__dirname, "../scripts/vscode.patch");
+//	const apply = await runner.execute("git", ["apply", "--unidiff-zero", patchPath]);
+//	if (apply.exitCode !== 0) {
+//		throw new Error(`Failed to apply patches: ${apply.stderr}`);
+//	}
+//});
 
 register("package", async (runner, releaseTag) => {
 	if (!releaseTag) {
