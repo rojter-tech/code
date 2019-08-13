@@ -28,7 +28,7 @@ const buildServerBinary = register("build:server:binary", async (runner) => {
 	await ensureInstalled();
 	await Promise.all([
 		buildBootstrapFork(),
-		buildWeb(),
+//		buildWeb(),
 		buildServerBundle(),
 		buildAppBrowser(),
 	]);
