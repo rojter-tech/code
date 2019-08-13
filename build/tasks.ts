@@ -28,7 +28,7 @@ const buildServerBinary = register("build:server:binary", async (runner) => {
 	await ensureInstalled();
 	await Promise.all([
 		buildBootstrapFork(),
-//		buildWeb(),
+		buildWeb(),
 		buildServerBundle(),
 		buildAppBrowser(),
 	]);
@@ -62,9 +62,9 @@ const buildServerBinaryCopy = register("build:server:binary:copy", async (runner
 		ripgrepPath += ".exe";
 	}
 
-	if (!fs.existsSync(webOutputPath)) {
-		throw new Error("Web bundle must be built");
-	}
+//	if (!fs.existsSync(webOutputPath)) {
+//		throw new Error("Web bundle must be built");
+//	}
 	if (!fs.existsSync(defaultExtensionsPath)) {
 		throw new Error("Default extensions must be built");
 	}
