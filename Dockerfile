@@ -1,6 +1,6 @@
 FROM node:10.16.0
 ARG codeServerVersion=docker
-ARG vscodeVersion=1.37.0
+ARG vscodeVersion=1.36.1
 
 # Install VS Code's deps. These are the only two it seems we need.
 RUN apt-get update && apt-get install -y \
